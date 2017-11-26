@@ -1,4 +1,5 @@
 from TriggrdDict import TriggrdDict
+from Globals import inputFilePath, outputFilePath
 
 corporateTrigger = TriggrdDict()
-corporateTrigger.createTriggerArray('dataset.csv', 'outputData.json')
+corporateTrigger.createTriggerArray(inputFilePath, outputFilePath)
