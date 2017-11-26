@@ -51,20 +51,19 @@ class TriggrdDict():
         file.write(str(self.triggernary))
         file.close()
 
+    def fitting(self,x):
+        return 1.154595 - 0.3480303*x + 0.1586106*math.pow(x,2) - 0.0149023*math.pow(x,3) + 0.0005504595*math.pow(x,4) - 0.000007036462*math.pow(x,5)
+        # return 1.352011 + 0.08025676*x - 0.00000681859*math.pow(x,2)
 
-corporateTrigger = TriggrdDict()
-corporateTrigger.createTriggerArray('dataset.csv', 'outputData.json')
+    def updateDelta(self,arr):
+        # Compute std dev
+        for i in range(1,len(arr)):
+            sum = 0
+            for item in arr[0:i]:
+                sum += fitting(item)
+            avg = sum / i
+            #delta = avg + np.std(arr[0:i])
+            print(math.ceil(avg))
 
-def fitting(x):
-    return 1.154595 - 0.3480303*x + 0.1586106*math.pow(x,2) - 0.0149023*math.pow(x,3) + 0.0005504595*math.pow(x,4) - 0.000007036462*math.pow(x,5)
-    # return 1.352011 + 0.08025676*x - 0.00000681859*math.pow(x,2)
-
-def updateDelta(arr):
-    # Compute std dev
-    for i in range(1,len(arr)):
-        sum = 0
-        for item in arr[0:i]:
-            sum += fitting(item)
-        avg = sum / i
-        #delta = avg + np.std(arr[0:i])
-        print(math.ceil(avg))
+#corporateTrigger = TriggrdDict()
+#corporateTrigger.createTriggerArray('dataset.csv', 'outputData.json')
