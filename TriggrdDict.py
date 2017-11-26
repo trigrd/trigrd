@@ -1,10 +1,8 @@
 import numpy as np
 import math
 import csv
-import re
 
-BUCKET_SIZE = 5
-transactionPattern = re.compile("\d+.\d+|\d+")
+from Globals import BUCKET_SIZE, transactionPattern
 
 class TriggrdDict():
 
